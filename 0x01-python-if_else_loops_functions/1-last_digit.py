@@ -16,7 +16,7 @@ def last(n) -> int:
     if n >= 0:
         return n % 10
     else:
-        return -((n * -1) % 10)
+        return n % -10
 
 
 print(f"Last digit of {number:d} is {last(number):d} {sign(last(number))}")
