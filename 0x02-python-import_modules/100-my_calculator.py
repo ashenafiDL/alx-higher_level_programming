@@ -14,7 +14,7 @@ def main():
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     elif argv[2] not in ['+', '-', '*', '/']:
-        print("Unknown operator. Availabel operators: +, -, * and /")
+        print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
     else:
         i = 0
