@@ -7,37 +7,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *rev;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *second_half;
+	listint_t *slow_prev= *head;
 
-	rev = *head;
 	if (*head == NULL)
 		return (1);
-	else
-		reverse(&rev);
 
-	return (compare(head, &rev));
-}
-
-/**
- * get_middle - gets the middle node of a singly linked list
- * @head: address of pointer to the first node
- *
- * Return: the middle node
- */
-listint_t *get_middle(listint_t **head)
-{
-	listint_t *middle, *last;
-
-	middle = *head;
-	last = *head;
-
-	while (last != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		middle = middle->next;
-		last = last->next->next;
+		fast = fast->next->next;
+		slow_prev = slow;
+		slow = slow->next;
 	}
 
-	return (middle);
+	if (fast != NULL)
+		slow = slow->next;
+
+	second_half = slow;
+	slow_prev->next = NULL;
+	reverse(&second_half);
+	return (compare(head, &second_half));
 }
 
 /**
@@ -75,7 +66,7 @@ int compare(listint_t **first, listint_t **second)
 	listint_t *f = *first;
 	listint_t *s = *second;
 
-	while (f != NULL && s != NULL)
+	while (s != NULL)
 	{
 		if (f->n != s->n)
 			return (0);
