@@ -7,17 +7,15 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *second_half_ptr;
+	listint_t *rev;
 
+	rev = *head;
 	if (*head == NULL)
 		return (1);
 	else
-	{
-		second_half_ptr = get_middle(head);
-		reverse(&second_half_ptr);
-	}
+		reverse(&rev);
 
-	return (compare(head, &second_half_ptr));
+	return (compare(head, &rev));
 }
 
 /**
