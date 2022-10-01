@@ -12,8 +12,8 @@ def roman_to_int(roman_string):
     res = 0
     i = 0
 
-    n = len(roman_string)
-    if isinstance(roman_string, str) and n > 0:
+    if isinstance(roman_string, str):
+        n = len(roman_string)
         while i < n:
             if i < n - 1 and r[roman_string[i + 1]] > r[roman_string[i]]:
                 res += r[roman_string[i + 1]] - r[roman_string[i]]
