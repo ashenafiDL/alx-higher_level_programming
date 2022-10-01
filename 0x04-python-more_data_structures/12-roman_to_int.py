@@ -21,4 +21,4 @@ def roman_to_int(roman_string):
             else:
                 res += r[roman_string[i]]
                 i += 1
-        return res
+    return res
