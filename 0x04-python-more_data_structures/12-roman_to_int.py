@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    roman = {
+    n = len(roman_string)
+    r = {
             "I": 1,
             "V": 5,
             "X": 10,
@@ -12,11 +13,12 @@ def roman_to_int(roman_string):
     res = 0
     i = 0
 
-    while i < len(roman_string):
-        if i < len(roman_string) - 1 and roman[roman_string[i + 1]] > roman[roman_string[i]]:
-            res += roman[roman_string[i + 1]] - roman[roman_string[i]]
-            i += 2
-        else:
-            res += roman[roman_string[i]]
-            i += 1
-    return res
+    if isinstance(roman_string, str):
+        while i < n:
+            if i < n - 1 and r[roman_string[i + 1]] > r[roman_string[i]]:
+                res += r[roman_string[i + 1]] - r[roman_string[i]]
+                i += 2
+            else:
+                res += r[roman_string[i]]
+                i += 1
+        return res
