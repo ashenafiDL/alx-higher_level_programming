@@ -11,8 +11,8 @@ class Square:
         """Initializes a new square object with a size
 
         Args:
-            size (int): the size of the sqaure. The size must be positive number
-            (obviously)
+            size (int): the size of the sqaure.
+            The size must be positive number (obviously)
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")

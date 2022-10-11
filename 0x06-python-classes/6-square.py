@@ -2,6 +2,7 @@
 """This module defines a class called Square.
 """
 
+
 class Square:
     """Represents a square with a size
     """
@@ -10,8 +11,8 @@ class Square:
         """Initializes a new square object with a size
 
         Args:
-            size (int): the size of the sqaure. The size must be positive number
-            (obviously)
+            size (int): the size of the sqaure.
+            The size must be positive number (obviously)
         """
         self.size = size
         self.position = position
@@ -29,7 +30,6 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
-
     @property
     def position(self):
         """tuple: the coordinates of the square"""
@@ -44,7 +44,6 @@ class Square:
         else:
             self.__position = value
 
-
     def area(self):
         """Computes the area of the square object
 
@@ -52,7 +51,6 @@ class Square:
             The are of the current sqaure object
         """
         return (self.__size * self.__size)
-
 
     def my_print(self):
         """Prints the square with the character #
@@ -66,9 +64,10 @@ class Square:
                 print()
 
             for height in range(self.__size):
-                # before printing the row first print " " for the amount of x coordinate
+                # before printing the row first print " "
+                # for the amount of x coordinate
                 for x in range(self.__position[0]):
                     print(' ', end='')
                 for width in range(self.__size):
-                        print("#", end='')
+                    print("#", end='')
                 print()

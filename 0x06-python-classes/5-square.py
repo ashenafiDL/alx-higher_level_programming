@@ -2,6 +2,7 @@
 """This module defines a class called Square.
 """
 
+
 class Square:
     """Represents a square with a size
     """
@@ -10,8 +11,8 @@ class Square:
         """Initializes a new square object with a size
 
         Args:
-            size (int): the size of the sqaure. The size must be positive number
-            (obviously)
+            size (int): the size of the sqaure.
+            The size must be positive number (obviously)
         """
         self.size = size
 
@@ -28,7 +29,6 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = size
 
-
     def area(self):
         """Computes the area of the square object
 
@@ -36,7 +36,6 @@ class Square:
             The are of the current sqaure object
         """
         return (self.__size * self.__size)
-
 
     def my_print(self):
         """Prints the square with the character #

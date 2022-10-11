@@ -11,15 +11,14 @@ class Square:
         """Initializes a new square object with a size
 
         Args:
-            size (int): the size of the sqaure. The size must be positive number
-            (obviously)
+            size (int): the size of the sqaure.
+            The size must be positive number (obviously)
         """
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
-
 
     def area(self):
         """Computes the area of the square object
