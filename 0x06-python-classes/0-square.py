@@ -6,6 +6,5 @@ The Square class doesn't do anything, it is empty for now
 
 
 class Square:
-    """Empty class that defines a square
-    """
+    """Empty class that defines a squar."""
     pass
