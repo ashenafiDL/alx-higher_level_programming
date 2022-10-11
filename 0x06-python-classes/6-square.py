@@ -57,17 +57,17 @@ class Square:
         """
 
         if self.__size == 0:
-            print()
+            print("")
         else:
             # first print empty lines for the amount of the y coordinate
-            for y in range(self.__position[1]):
-                print()
+            for y in range(0, self.__position[1]):
+                print("")
 
-            for height in range(self.__size):
+            for height in range(0, self.__size):
                 # before printing the row first print " "
                 # for the amount of x coordinate
-                for x in range(self.__position[0]):
+                for x in range(0, self.__position[0]):
                     print(' ', end='')
-                for width in range(self.__size):
+                for width in range(0, self.__size):
                     print("#", end='')
-                print()
+                print("")
