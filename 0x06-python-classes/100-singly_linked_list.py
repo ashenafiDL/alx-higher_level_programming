@@ -12,8 +12,8 @@ class Node:
             data (int): the new data to be inserted
             next_node (Node): the next node in the list
         """
-        self.__data = data
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
