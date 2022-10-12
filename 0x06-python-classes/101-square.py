@@ -71,7 +71,7 @@ class Square:
                     print(' ', end='')
                 for width in range(0, self.__size):
                     print("#", end='')
-                print ("")
+                print("")
 
     def __str__(self) -> str:
         """Makes Square object printable"""

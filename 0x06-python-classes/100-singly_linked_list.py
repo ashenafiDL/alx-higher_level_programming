@@ -33,7 +33,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        if value != None and not isinstance(value, Node):
+        if value is not None and not isinstance(value, Node):
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
@@ -57,13 +57,13 @@ class SinglyLinkedList:
         new_node = Node(value)
 
         temp = self.__head
-        if self.__head == None:
+        if self.__head is None:
             self.__head = new_node
         elif temp.data >= value:
             self.__head = new_node
             new_node.next_node = temp
         else:
-            while temp.next_node != None:
+            while temp.next_node is not None:
                 if temp.next_node.data >= value:
                     break
                 temp = temp.next_node
@@ -82,7 +82,7 @@ class SinglyLinkedList:
         datas = []
 
         temp = self.__head
-        while temp != None:
+        while temp is not None:
             datas.append(str(temp.data))
             temp = temp.next_node
 
