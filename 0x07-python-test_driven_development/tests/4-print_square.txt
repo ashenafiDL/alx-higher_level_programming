@@ -1,0 +1,41 @@
+===============================
+Test file for 4-print_square.py
+===============================
+
+import the module
+
+    >>> print_square = __import__("4-print_square").print_square
+
+Positive Numbers
+======
+
+if size is 0 print nothing
+    >>> print_square(0)
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Negative and Float Numbers
+================
+
+    >>> print_square(-4)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+    >>> print_square(5.6)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Non-Numbers
+===========
+
+    >>> print_square("very long square")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
