@@ -39,3 +39,10 @@ Non-Numbers
     >>> print_square(None)
     Traceback (most recent call last):
     TypeError: size must be an integer
+
+Missing arguments
+=================
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
