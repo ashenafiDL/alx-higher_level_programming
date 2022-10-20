@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""Defines a function for greetings"""
-
-
-from unicodedata import name
+"""Defines a function called say_my_name for greeting
+"""
 
 
 def say_my_name(first_name, last_name="") -> None:
