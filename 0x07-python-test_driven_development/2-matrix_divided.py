@@ -13,11 +13,10 @@ def matrix_divided(matrix, div) -> list:
         list: a new matrix after the division
     """
     if (not isinstance(matrix, list)
-        or not isinstance(matrix[0], list)
-            or not isinstance(matrix[1], list)):
+            or not all(isinstance(row, list) for row in matrix)):
         raise TypeError(
             "matrix must be a matrix (list of lists) of integers/floats")
-    if len(matrix[0]) != len(matrix[1]):
+    if not all(len(row) == len(matrix[0]) for row in matrix):
         raise TypeError("Each row of the matrix must have the same size")
 
     if not isinstance(div, int) and not isinstance(div, float):
@@ -31,8 +30,8 @@ def matrix_divided(matrix, div) -> list:
         for n in row:
             if not isinstance(n, int) and not isinstance(n, float):
                 raise TypeError(
-                    "matrix must be a matrix (list of lists) \
-                        of integers/floats")
+                    "matrix must be a matrix (list of lists) "
+                    "of integers/floats")
             sub_matrix.append(round(n / div, ndigits=2))
         new_matrix.append(sub_matrix)
 
