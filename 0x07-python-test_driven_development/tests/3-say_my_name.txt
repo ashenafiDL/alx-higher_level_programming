@@ -19,7 +19,7 @@ Optional argument
 =================
 
     >>> say_my_name("Bob")
-    My name is Bob
+    My name is Bob 
 
 Non-Strings
 ===========
