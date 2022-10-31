@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Defines a base class for all the future classes"""
 import json
+import random
+import turtle
 
 
 class Base():
@@ -102,3 +104,50 @@ class Base():
             return list_obj
         except FileNotFoundError as e:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """draws all the rectangles and squares
+
+        Args:
+            list_rectangles (list): list of rectangles
+            list_squares (list): list of squares
+        """
+        turtle.colormode(255)
+        turtle.home()
+        for rect in list_rectangles:
+            turtle.color((random.randint(0, 255),
+                          random.randint(0, 255),
+                          random.randint(0, 255)))
+            turtle.begin_fill()
+
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+            turtle.right(90)
+            turtle.forward(rect.width)
+            turtle.right(90)
+            turtle.forward(rect.height)
+
+            turtle.end_fill()
+
+        for sq in list_squares:
+            # turtle.color(colors[random.randint(0, 4)],
+            #              colors[random.randint(0, 4)])
+            turtle.color((random.randint(0, 255),
+                          random.randint(0, 255),
+                          random.randint(0, 255)))
+            turtle.begin_fill()
+
+            turtle.forward(sq.size)
+            turtle.right(90)
+            turtle.forward(sq.size)
+            turtle.right(90)
+            turtle.forward(sq.size)
+            turtle.right(90)
+            turtle.forward(sq.size)
+
+            turtle.end_fill()
+
+        turtle.hideturtle()
+        turtle.done()
