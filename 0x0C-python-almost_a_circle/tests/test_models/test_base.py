@@ -57,20 +57,20 @@ class TestToJsonString(unittest.TestCase):
                          '{"id": 1, "width": 10, "height": 5, "x": 0, "y": 0}')
 
 
-class TestSaveToFile(unittest.TestCase):
-    """Tests for the method `save_to_file`"""
+# class TestSaveToFile(unittest.TestCase):
+#     """Tests for the method `save_to_file`"""
 
-    def test_content_rectangle(self):
-        rect = Rectangle(2, 3, 0, 0, 1)
-        Base.save_to_file([rect])
-        with open('Rectangle.json', mode='r') as file:
-            self.assertEqual(
-                file.read(),
-                '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
+#     def test_content_rectangle(self):
+#         rect = Rectangle(2, 3, 0, 0, 1)
+#         Base.save_to_file([rect])
+#         with open('Rectangle.json', mode='r') as file:
+#             self.assertEqual(
+#                 file.read(),
+#                 '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
 
-    def tearDown(self) -> None:
-        try:
-            os.remove('Rectangle.json')
-            os.remove('Square.json')
-        except Exception as _:
-            pass
+#     def tearDown(self) -> None:
+#         try:
+#             os.remove('Rectangle.json')
+#             os.remove('Square.json')
+#         except Exception as _:
+#             pass
