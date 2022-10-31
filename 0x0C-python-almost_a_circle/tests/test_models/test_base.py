@@ -60,24 +60,13 @@ class TestToJsonString(unittest.TestCase):
 class TestSaveToFile(unittest.TestCase):
     """Tests for the method `save_to_file`"""
 
-    def test_file_created_rectangle(self):
-        rect1 = Rectangle(10, 6)
-        Base.save_to_file([rect1])
-        status = os.DirEntry.is_file()
-        self.assertTrue(status, True)
-
-    def test_file_created_square(self):
-        sq = Square(5)
-        Base.save_to_file([sq])
-        status = os.path.exists('Square.json')
-        self.assertTrue(status, True)
-
     def test_content_rectangle(self):
         rect = Rectangle(2, 3, 0, 0, 1)
         Base.save_to_file([rect])
         with open('Rectangle.json', mode='r') as file:
             self.assertEqual(
-                file.read(), '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
+                file.read(),
+                '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
 
     def tearDown(self) -> None:
         try:
