@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """Tests files for base.py"""
+import os
 import unittest
+
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase(unittest.TestCase):
@@ -35,10 +38,13 @@ class TestBase(unittest.TestCase):
 class TestToJsonString(unittest.TestCase):
     """Tests for `to_json_string` method"""
 
+    def test_type(self):
+        output = Base.to_json_string(list_dictionaries=None)
+        self.assertIsInstance(output, str)
+
     def test_empty(self):
         """Test for empty dictionary"""
         output = Base.to_json_string(list_dictionaries=None)
-        self.assertIsInstance(output, str)
         self.assertEqual("[]", output)
 
     def test_correct_output(self):
@@ -49,3 +55,33 @@ class TestToJsonString(unittest.TestCase):
         self.assertIsInstance(output, str)
         self.assertEqual(output,
                          '{"id": 1, "width": 10, "height": 5, "x": 0, "y": 0}')
+
+
+class TestSaveToFile(unittest.TestCase):
+    """Tests for the method `save_to_file`"""
+
+    def test_file_created_rectangle(self):
+        rect1 = Rectangle(10, 6)
+        Base.save_to_file([rect1])
+        status = os.DirEntry.is_file()
+        self.assertTrue(status, True)
+
+    def test_file_created_square(self):
+        sq = Square(5)
+        Base.save_to_file([sq])
+        status = os.path.exists('Square.json')
+        self.assertTrue(status, True)
+
+    def test_content_rectangle(self):
+        rect = Rectangle(2, 3, 0, 0, 1)
+        Base.save_to_file([rect])
+        with open('Rectangle.json', mode='r') as file:
+            self.assertEqual(
+                file.read(), '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
+
+    def tearDown(self) -> None:
+        try:
+            os.remove('Rectangle.json')
+            os.remove('Square.json')
+        except Exception as _:
+            pass
