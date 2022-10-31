@@ -62,7 +62,7 @@ class Base():
             json_string (str): json representation of list of objects
 
         Returns:
-            list: list of objects
+            list: list of dictionaries
         """
         if json_string is None:
             return []
@@ -83,3 +83,22 @@ class Base():
 
         obj.update(**dictionary)
         return (obj)
+
+    @classmethod
+    def load_from_file(cls) -> list:
+        """load list of obj from file
+
+        Returns:
+            list: list of objs
+        """
+        filename = cls.__name__ + '.json'
+        try:
+            with open(filename, mode='r') as file:
+                content = file.read()
+
+            list_dict = Base.from_json_string(content)
+            list_obj = [cls.create(**i) for i in list_dict]
+
+            return list_obj
+        except FileExistsError as e:
+            return []
