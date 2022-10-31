@@ -83,6 +83,8 @@ class Rectangle(Base):
         return self.__height * self.__width
 
     def display(self):
+        """Prints a `Rectangle instance with the character '#'`
+        """
         [print("") for _ in range(self.__y)]
         for _ in range(self.__height):
             [print(" ", end="") for _ in range(self.__x)]
