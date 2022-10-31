@@ -100,5 +100,5 @@ class Base():
             list_obj = [cls.create(**i) for i in list_dict]
 
             return list_obj
-        except FileExistsError as e:
+        except FileNotFoundError as e:
             return []
