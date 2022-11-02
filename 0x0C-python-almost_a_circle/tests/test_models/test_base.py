@@ -57,20 +57,52 @@ class TestToJsonString(unittest.TestCase):
                          '{"id": 1, "width": 10, "height": 5, "x": 0, "y": 0}')
 
 
-# class TestSaveToFile(unittest.TestCase):
-#     """Tests for the method `save_to_file`"""
+class TestFromJsonString(unittest.TestCase):
+    """Tests for the method `from_json_string`"""
 
-#     def test_content_rectangle(self):
-#         rect = Rectangle(2, 3, 0, 0, 1)
-#         Base.save_to_file([rect])
-#         with open('Rectangle.json', mode='r') as file:
-#             self.assertEqual(
-#                 file.read(),
-#                 '{"id": 1, "width": 2, "height": 3, "x": 0, "y": 0}')
+    def test_none(self):
+        output = Base.from_json_string(None)
+        self.assertEqual(output, [])
 
-#     def tearDown(self) -> None:
-#         try:
-#             os.remove('Rectangle.json')
-#             os.remove('Square.json')
-#         except Exception as _:
-#             pass
+    def test_empty_list(self):
+        output = Base.from_json_string("[]")
+        self.assertEqual(output, [])
+
+    def test_dict(self):
+        output = Base.from_json_string('[{ "id": 89 }]')
+        self.assertListEqual(output, [{"id": 89}])
+
+
+class TestCreate(unittest.TestCase):
+    """Tests for the method `create`"""
+
+    def test_create_id(self):
+        obj = Rectangle.create(**{'id': 89})
+        self.assertEqual(obj.id, 89)
+
+    def test_create_width(self):
+        obj = Rectangle.create(**{'id': 89, 'width': 10})
+        self.assertEqual(obj.id, 89)
+        self.assertEqual(obj.width, 10)
+
+    def test_create_height(self):
+        obj = Rectangle.create(**{'id': 89, 'width': 10, 'height': 5})
+        self.assertEqual(obj.id, 89)
+        self.assertEqual(obj.width, 10)
+        self.assertEqual(obj.height, 5)
+
+    def test_create_x(self):
+        obj = Rectangle.create(**{'id': 89, 'width': 10, 'height': 5, 'x': 1})
+        self.assertEqual(obj.id, 89)
+        self.assertEqual(obj.width, 10)
+        self.assertEqual(obj.height, 5)
+        self.assertEqual(obj.x, 1)
+
+    def test_create_y(self):
+        obj = Rectangle.create(
+            **{'id': 89, 'width': 10, 'height': 5, 'x': 1, 'y': 1})
+        self.assertEqual(obj.id, 89)
+        self.assertEqual(obj.width, 10)
+        self.assertEqual(obj.height, 5)
+        self.assertEqual(obj.x, 1)
+        self.assertEqual(obj.y, 1)

@@ -71,9 +71,17 @@ class TestAttributesValue(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(0, 5)
 
+    def test_negative_width(self):
+        with self.assertRaises(ValueError):
+            Rectangle(-10, 5)
+
     def test_incorrect_height(self):
         with self.assertRaises(ValueError):
             Rectangle(5, 0)
+
+    def test_negative_height(self):
+        with self.assertRaises(ValueError):
+            Rectangle(5, -5)
 
     def test_incorrect_x(self):
         with self.assertRaises(ValueError):
